@@ -1,3 +1,4 @@
+require('dotenv').config()
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
@@ -11,6 +12,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 app.use(logger);
+app.post("/gateway",async (req,res)=>{
+    const body = req.body
+    console.log("接收事件",body)
+    res.send("success")
+
+})
 
 // 首页
 app.get("/", async (req, res) => {
